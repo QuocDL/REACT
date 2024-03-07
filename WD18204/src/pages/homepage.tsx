@@ -1,4 +1,28 @@
+import Productcard from "../components/Productcard"
+import { Product } from "../interfaces/products"
+
 export const HomePage = ()=>{
+
+    const products: Product[] = [
+        {
+            id: 1,
+            title: "long established",
+            desc: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....",
+            date: "May 20th 2020"
+        },
+        {
+           id: 2,
+            title: "long established",
+            desc: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....",
+            date: "May 20th 2020" 
+        },
+        {
+            id: 3,
+            title: "long established",
+            desc: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....",
+            date: "May 20th 2020"
+        }
+    ]
     return(
     <>
         <section className="homepage">
@@ -40,45 +64,9 @@ export const HomePage = ()=>{
         <section className="card_pannel">
             <div className="container">
                 <div className="pannel_inner">
-                    <div className="pannel">
-                        <a href="#" className="pannel_media">
-                            <img className="img_pannel" src="./public/image 2.png" alt="" />
-                        </a>
-                        <div className="pannel_content">
-                            <h3 className="pannel_title">long established</h3>
-                            <p className="pannel_desc">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....</p>
-                            <div className="pannel_action">
-                                <span className="card_date">May 20th 2020</span>
-                                <a className="card_more" href="#">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="pannel">
-                        <a href="#" className="pannel_media">
-                            <img className="img_pannel" src="./public/image 4.png" alt="" />
-                        </a>
-                        <div className="pannel_content">
-                            <h3 className="pannel_title">long established</h3>
-                            <p className="pannel_desc">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....</p>
-                            <div className="pannel_action">
-                                <span className="card_date">May 20th 2020</span>
-                                <a className="card_more" href="#">Read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="pannel">
-                        <a href="#" className="pannel_media">
-                            <img className="img_pannel" src="./public/image 5.png" alt="" />
-                        </a>
-                        <div className="pannel_content">
-                            <h3 className="pannel_title">long established</h3>
-                            <p className="pannel_desc">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....</p>
-                            <div className="pannel_action">
-                                <span className="card_date">May 20th 2020</span>
-                                <a className="card_more" href="#">Read more</a>
-                            </div>
-                        </div>
-                    </div>
+                   {products.map((product,index)=>(
+                     <Productcard key={index} product={product}/>
+                   ))}
                 </div>
             </div>
         </section>

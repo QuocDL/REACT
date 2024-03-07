@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import {Link} from 'react-router-dom'
 export const Header = ()=>{
     const [isActive, setActive] = useState(false)
     const openBar = ()=>{
@@ -18,8 +18,8 @@ export const Header = ()=>{
                 <div>
                     <ul className={isActive ? "nav_header": "nav_header_open"}>
                         <button className="btn_close_res" onClick={openBar}>X</button>
-                        <li><a className="nav_item" href="">Home</a></li>
-                        <li><a className="nav_item" href="">Article</a></li>
+                        <li><Link className="nav_item" to="">Home</Link></li>
+                        <li><Link className="nav_item" to="article">Article</Link></li>
                     </ul>
                     <button onClick={openBar} className={isActive ? "btn_nav": "btn_close"}>
                         <svg viewBox="0 0 100 80" width="20" height="20">
