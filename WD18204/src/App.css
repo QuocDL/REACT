@@ -190,7 +190,6 @@ main{
 .pannel{
   width: 300px;
   box-shadow: 0px 4px 4px 0px #C0BDBD40;
-  height: 380px;
 }
 .pannel_content{
   padding: 18px 23px 24px 16px;
@@ -280,10 +279,12 @@ main{
   .coffe_img{
     display: none;
   }
+
 }
 
  /* `md` applies to small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
+
   .btn_nav{
     display: block;
   }
@@ -307,6 +308,13 @@ main{
   .card_media_img{
     width: 325px;
   }
+    .media_article {
+       display: none;
+   }
+   .article_inner{
+    width: 480px;
+   }
+
 }
 
  /* `lg` applies to medium devices (tablets, less than 992px) */
@@ -354,7 +362,14 @@ main{
   .card_desc{
     text-align: left;
   }
-
+  /* ARTICLE */
+  .media_article{
+    display: flex;
+    justify-content: center;
+  }
+  .img_banner_article{
+    width: 80%;
+  }
 }
 
 
@@ -417,5 +432,7 @@ main{
 .article_content h2{
   font-size: 3rem;
   font-family: 700;
-
 }
+
+
+

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link } from 'react-router-dom'
 export const Header = () => {
-    const [isActive, setActive] = useState(false)
+    const [isActive, setActive] = useState(true)
     const openBar = () => {
         setActive(!isActive)
         console.log(!isActive)
@@ -12,9 +12,9 @@ export const Header = () => {
         <header>
             <div className="container">
                 <div className="header_inner">
-                    <a href="#">
+                    <Link to="/">
                         <h2 className="header_title">HotCoffee</h2>
-                    </a>
+                    </Link>
                     <div>
                         <ul className={isActive ? "nav_header" : "nav_header_open"}>
                             <button className="btn_close_res" onClick={openBar}>X</button>

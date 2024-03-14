@@ -9,7 +9,7 @@ const Productcard: React.FC<ProductCardProps> = ({product}) => {
     <div>
        <div className="pannel">
                         <a href="#" className="pannel_media">
-                            <img className="img_pannel" src="./public/image 4.png" alt="" />
+                            <img className="img_pannel" src={product.image} alt="" />
                         </a>
                         <div className="pannel_content">
                             <h3 className="pannel_title">{product.title}</h3>

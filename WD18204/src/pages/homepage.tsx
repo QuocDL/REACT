@@ -1,28 +1,12 @@
+import { useContext } from "react"
+import { ProductContext } from "../context/ProductContextProvider"
 import Productcard from "../components/Productcard"
 import { Product } from "../interfaces/products"
 
-export const HomePage = ()=>{
 
-    const products: Product[] = [
-        {
-            id: 1,
-            title: "long established",
-            desc: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....",
-            date: "May 20th 2020"
-        },
-        {
-           id: 2,
-            title: "long established",
-            desc: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....",
-            date: "May 20th 2020" 
-        },
-        {
-            id: 3,
-            title: "long established",
-            desc: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that....",
-            date: "May 20th 2020"
-        }
-    ]
+
+export const HomePage = ()=>{
+    const {products} = useContext(ProductContext)
     return(
     <>
         <section className="homepage">
@@ -64,8 +48,8 @@ export const HomePage = ()=>{
         <section className="card_pannel">
             <div className="container">
                 <div className="pannel_inner">
-                   {products.map((product,index)=>(
-                     <Productcard key={index} product={product}/>
+                   {products.map((item: Product, index: number)=>(
+                    <Productcard key={index} product={item}/>
                    ))}
                 </div>
             </div>
