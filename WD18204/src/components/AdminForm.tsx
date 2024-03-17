@@ -43,7 +43,7 @@ const AdminForm = () => {
         }else{
             console.log(isEditMode)
         }
-    }, [id, isEditMode, reset])
+    }, [id])
    
   return (
     <div>
