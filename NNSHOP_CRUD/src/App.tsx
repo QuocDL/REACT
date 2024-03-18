@@ -6,7 +6,7 @@ import Shoppage from './page/Shoppage'
 import DetailPage from './page/DetailPage'
 import AdminList from './page/AdminList'
 import FormProduct from './page/FormProduct'
-
+  import 'react-toastify/dist/ReactToastify.css';
 function App() {
 
   return (

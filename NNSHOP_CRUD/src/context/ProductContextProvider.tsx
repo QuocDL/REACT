@@ -20,6 +20,7 @@ type ActionType =
 |{type: "DELETE_PRODUCT", payload: number}
 
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ProductContext = createContext({} as any);
 const formatVnd = new Intl.NumberFormat('vi-VN',{
     style: 'currency',

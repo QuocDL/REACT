@@ -4,6 +4,7 @@ import { ProductContext } from '../context/ProductContextProvider'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 
 
@@ -31,6 +32,7 @@ const FormProduct = () => {
          try {
             await axios.post(`http://localhost:3000/products`, product);
              dispatch({type: "ADD_PRODUCTS", payload: product})
+             toast.success('Add New Product Complete!')
              navigate('/admin')
         } catch (error) {
             console.log(error)
@@ -39,6 +41,7 @@ const FormProduct = () => {
             try {
             await axios.put(`http://localhost:3000/products/${id}`, product);
              dispatch({type: "EDIT_PRODUCT", payload: product})
+             toast.success('Update Product Complete!')
              navigate('/admin')
             } catch (error) {
                 console.log(error)

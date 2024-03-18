@@ -1,14 +1,26 @@
-import { useContext, useEffect } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useContext, useEffect, useRef, useState } from 'react'
 import '../style/Admin.scss'
 import { ProductContext } from '../context/ProductContextProvider'
 import axios from 'axios'
 import { IProduct } from '../interfaces/IProduct'
 import { Link } from 'react-router-dom'
-
+import Dialog from '../components/Dialog'
+import { toast } from 'react-toastify'
 const AdminList = () => {
-
     const {products, dispatch, formatVnd} = useContext(ProductContext)
-
+    const [dialog, setDialog] = useState({
+        message: "",
+        status: false
+    })
+    const idProductRef = useRef()
+    const handleDialog =(message: string, status: boolean)=>{
+        setDialog({
+            message: message,
+            status: status
+        })
+    }
     useEffect(()=>{
         (async ()=>{
             try {
@@ -22,16 +34,21 @@ const AdminList = () => {
     },[])
 
     const onHandleRemove = async (id: any)=>{
-        try {
-            if(confirm('are you sure')){
-                await axios.delete(`http://localhost:3000/products/${id}`)
-                dispatch({type: "DELETE_PRODUCT", payload: id})
-            }
-        } catch (error) {
-            console.log(error)
+       idProductRef.current = id
+       const {data} = await axios.get(`http://localhost:3000/products/${idProductRef.current}`)
+       handleDialog(`Are you sure to delete ${data.title} have a id: ${data.id}`, true)
+      
+    }
+    const conFirmDialog = async(choose: boolean)=>{
+        if(choose){
+            await axios.delete(`http://localhost:3000/products/${idProductRef.current}`)
+            dispatch({type: "DELETE_PRODUCT", payload: idProductRef.current})
+            toast.success(`Delete complete!`)
+            handleDialog('',false)
+        }else{
+            handleDialog('', false)
         }
     }
-
   return (
     <>
     
@@ -71,7 +88,7 @@ const AdminList = () => {
   </table>
   <table></table>
     </div>
-
+   {dialog.status && <Dialog onDialog={conFirmDialog} message={dialog.message}/>}
     </>
   )
 }

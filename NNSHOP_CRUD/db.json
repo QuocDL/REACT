@@ -35,7 +35,8 @@
       "sales": {
         "saleNumber": "New",
         "saleBackgroud": "#2EC1AC"
-      }
+      },
+      "oldprice": ""
     },
     {
       "id": "5",
