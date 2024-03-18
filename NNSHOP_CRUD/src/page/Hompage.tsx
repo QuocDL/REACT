@@ -5,14 +5,14 @@ import axios from 'axios'
 import { IProduct } from '../interfaces/IProduct'
 import ProductCard from '../components/ProductCard'
 const Hompage = () => {
-    const {products, dispatch} = useContext(ProductContext)
+    const {products, dispatch, formatVnd} = useContext(ProductContext)
     console.log(products.value)
     useEffect(() => {
         (async () => {
             try {
                 const { data } = await axios.get(`http://localhost:3000/products`);
                 dispatch({ type: "SET_PRODUCTS", payload: data });
-
+                document.title= `Trang Chủ`
                 // setProducts(data)
             } catch (error) {
                 console.log(error)
@@ -36,7 +36,7 @@ const Hompage = () => {
       <div className="body">
         <div className="product-list">
         {products?.value?.map((item: IProduct, index: number )=> index < 4 && ( 
-            <ProductCard key={index} product={item}/>
+            <ProductCard key={index} product={item} formatVnd={formatVnd}/>
         ))}
         </div>
       </div>

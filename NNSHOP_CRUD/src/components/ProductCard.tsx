@@ -3,8 +3,9 @@ import { IProduct } from "../interfaces/IProduct"
 
 export type ProductCard = {
     product: IProduct;
+    formatVnd: any
 }
-const ProductCard: React.FC<ProductCard> = ({product}) => {
+const ProductCard: React.FC<ProductCard> = ({product, formatVnd}) => {
   return (
           <div className="product-item">
             <div className="product-media">
@@ -23,8 +24,8 @@ const ProductCard: React.FC<ProductCard> = ({product}) => {
                 {product.category}
               </a>
               <div className="product-price">
-                <span className="product-price__new">{product.price}</span>
-                <span className="product-price__old">{product.oldprice }</span>
+                <span className="product-price__new">{formatVnd.format(product.price)}</span>
+                {product.oldprice && <span className="product-price__old">{formatVnd.format(product.oldprice)}</span>}
               </div>
             </div>
             <div className="product-actions">

@@ -23,37 +23,38 @@ const FormProduct = () => {
         formState: {errors},
         reset
     } = useForm<FormValue>()
-
     const navigate = useNavigate()
 
-    const onSubmit: SubmitHandler<FormValue> = async(data) =>{
+    const onSubmit: SubmitHandler<FormValue> = async(product) =>{
        if(!id){
+        document.title = 'Thêm Sản Phẩm'
          try {
-            await axios.post(`http://localhost:3000/products`, data);
-             dispatch({type: "ADD_PRODUCTS", payload: data})
+            await axios.post(`http://localhost:3000/products`, product);
+             dispatch({type: "ADD_PRODUCTS", payload: product})
              navigate('/admin')
         } catch (error) {
             console.log(error)
         }
        }else{
             try {
-            await axios.put(`http://localhost:3000/products/${id}`, data);
-             dispatch({type: "EDIT_PRODUCT", payload: data})
+            await axios.put(`http://localhost:3000/products/${id}`, product);
+             dispatch({type: "EDIT_PRODUCT", payload: product})
              navigate('/admin')
             } catch (error) {
                 console.log(error)
             }
        }
-       
-        console.log(data)
-    }
+}
 
     useEffect(()=>{
         if(id){
             (async()=>{
                 const {data} = await axios.get(`http://localhost:3000/products/${id}`)
                 reset(data)
+                document.title = `Sửa Sản Phẩm ${data.title}`
             })()
+        }else{
+          document.title = "Thêm Sản Phẩm"
         }
     },[id, reset])
 

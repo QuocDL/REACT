@@ -7,13 +7,14 @@ import { Link } from 'react-router-dom'
 
 const AdminList = () => {
 
-    const {products, dispatch} = useContext(ProductContext)
+    const {products, dispatch, formatVnd} = useContext(ProductContext)
 
     useEffect(()=>{
         (async ()=>{
             try {
                 const {data} = await axios.get(`http://localhost:3000/products`)
                 dispatch({type: "SET_PRODUCTS", payload: data})
+                document.title = 'Sản phẩm Admin'
             } catch (error) {
                 console.log(error)
             }
@@ -34,7 +35,7 @@ const AdminList = () => {
   return (
     <>
     
-    <div className="max_width">
+    <div className="container">
 
           <table>
     <thead>
@@ -56,8 +57,8 @@ const AdminList = () => {
             <td style={{fontWeight: 'bold'}}>{item.title}</td>
             <td><img src={item.image} width={50} alt="" /></td>
             <td style={{color: '#9F9F9F'}}>{item.category}</td>
-            <td>{item.price}</td>
-            <td>{item.oldprice}</td>
+            <td>{formatVnd.format(item.price)}</td>
+            <td>{formatVnd.format(item.oldprice || item.price)}</td>
             <td>
                 <div className="action_table">
                     <button onClick={()=> onHandleRemove(item.id)}>Delete</button>

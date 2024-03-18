@@ -6,13 +6,14 @@ import ProductCard from '../components/ProductCard'
 import '../style/Shop.scss'
 
 const Shoppage = () => {
-    const {products, dispatch} = useContext(ProductContext)
+    const {products, dispatch, formatVnd} = useContext(ProductContext)
 
     useEffect(()=>{
         (async()=>{
             try {
                 const {data} = await axios.get(`http://localhost:3000/products`)
                 dispatch({type: "SET_PRODUCTS", payload: data})
+                document.title = `Sản Phẩm`
             } catch (error) {
                 console.log(error)
             }
@@ -72,7 +73,7 @@ const Shoppage = () => {
       <div className="product_inner">
         <div className="product_list">
             {products?.value?.map((item: IProduct, index: number)=>(
-                <ProductCard key={index} product={item}/>
+                <ProductCard key={index} product={item} formatVnd={formatVnd}/>
             ))}
         </div>
         <div className="product_action">

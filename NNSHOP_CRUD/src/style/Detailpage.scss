@@ -88,6 +88,15 @@
     }
 
     &_content {
+        &_price{
+            display: flex;
+            gap: 22px;
+            align-items: end;
+            &__old{
+                text-decoration: line-through;
+                font-size: 1.8rem !important;
+            }
+        }
         h2 {
             font-size: 4.2rem;
             line-height: 63px;

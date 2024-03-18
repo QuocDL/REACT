@@ -5,14 +5,14 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 const DetailPage = () => {
-    const {products, dispatch} = useContext(ProductContext);
+    const {products, dispatch, formatVnd} = useContext(ProductContext);
     const {id} = useParams();
     useEffect(()=>{
         (async()=>{
             try {
                 const {data} = await axios.get(`http://localhost:3000/products/${id}`)
                 dispatch({type: "GET_PROID", payload: data} )
-                console.log(data)
+                document.title =`Chi tiết sản phẩm ${data.title}`
             } catch (error) {
                 console.log(error)
             }
@@ -78,7 +78,10 @@ const DetailPage = () => {
         <div className="detail_content">
           <div className="detail_content">
             <h2>{products.proID.title}</h2>
-            <span>{products.proID.price}</span>
+            <div className="detail_content_price">
+            <span>{formatVnd.format(products.proID.price)}</span>
+            { products.proID.oldprice && <span className='detail_content_price__old'>{formatVnd.format(products.proID.oldprice)}</span>}
+            </div>
             <div className="detail_content__star">
               <div className="star_fill">
                 <img src="/public/star.png" alt="" />
