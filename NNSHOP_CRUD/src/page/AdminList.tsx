@@ -57,6 +57,7 @@ const AdminList = () => {
           <table>
     <thead>
       <tr>
+        <th>ID</th>
         <th>Product Name</th>
         <th>Image</th>
         <th>Category</th>
@@ -71,6 +72,7 @@ const AdminList = () => {
     <tbody>
         {products.value.map((item: IProduct, index: number)=>(
             <tr key={index}>
+            <td >{item.id}</td>
             <td style={{fontWeight: 'bold'}}>{item.title}</td>
             <td><img src={item.image} width={50} alt="" /></td>
             <td style={{color: '#9F9F9F'}}>{item.category}</td>
