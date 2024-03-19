@@ -4,22 +4,15 @@ import { ProductContext } from '../context/ProductContextProvider'
 import axios from 'axios'
 import { IProduct } from '../interfaces/IProduct'
 import ProductCard from '../components/ProductCard'
+import { getProducts } from '../apis/productApi'
 const Hompage = () => {
-    const {products, dispatch, formatVnd} = useContext(ProductContext)
-    console.log(products.value)
-    useEffect(() => {
-        (async () => {
-            try {
-                const { data } = await axios.get(`http://localhost:3000/products`);
-                dispatch({ type: "SET_PRODUCTS", payload: data });
-                document.title= `Trang Chủ`
-                // setProducts(data)
-            } catch (error) {
-                console.log(error)
-            }
-        })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    const { products, setProducts} = useContext(ProductContext)
+    
+   useEffect(()=>{
+      getProducts(1, 5).then(res=>{
+        console.log(res)
+      })
+   },[])
 
 
 
@@ -36,9 +29,9 @@ const Hompage = () => {
       </div>
       <div className="body">
         <div className="product-list">
-        {products?.value?.map((item: IProduct, index: number )=> index < 4 && ( 
+        {/* {products?.value?.map((item: IProduct, index: number )=> index < 4 && ( 
             <ProductCard key={index} product={item} formatVnd={formatVnd}/>
-        ))}
+        ))} */}
         </div>
       </div>
     </div>

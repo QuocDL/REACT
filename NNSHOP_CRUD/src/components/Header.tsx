@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import '../style/Header.scss';
 const Header = () => {
   return (
@@ -12,14 +12,14 @@ const Header = () => {
       <nav className="main-menu">
         <ul className="main-menu__list">
           <li className="main-menu__item">
-            <Link className="main-menu__link" to="">
+            <NavLink className="main-menu__link" to="">
               Home
-            </Link>
+            </NavLink>
           </li>
           <li className="main-menu__item">
-            <Link className="main-menu__link" to="shop">
+            <NavLink className="main-menu__link" to="shop">
               Shop
-            </Link>
+            </NavLink>
           </li>
           <li className="main-menu__item">
             <a className="main-menu__link" href="">

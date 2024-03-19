@@ -53,8 +53,9 @@ const AdminList = () => {
     <>
     
     <div className="container">
-
-          <table>
+    <div className="admin_list_inner">
+        
+    <table>
     <thead>
       <tr>
         <th>ID</th>
@@ -89,6 +90,7 @@ const AdminList = () => {
     </tbody>
   </table>
   <table></table>
+    </div>
     </div>
    {dialog.status && <Dialog onDialog={conFirmDialog} message={dialog.message}/>}
     </>

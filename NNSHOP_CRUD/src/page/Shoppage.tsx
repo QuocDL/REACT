@@ -4,22 +4,12 @@ import axios from 'axios'
 import { IProduct } from '../interfaces/IProduct'
 import ProductCard from '../components/ProductCard'
 import '../style/Shop.scss'
+import { useQueryParams } from '../utils/utils'
 
 const Shoppage = () => {
-    const {products, dispatch, formatVnd} = useContext(ProductContext)
-
-    useEffect(()=>{
-        (async()=>{
-            try {
-                const {data} = await axios.get(`http://localhost:3000/products`)
-                dispatch({type: "SET_PRODUCTS", payload: data})
-                document.title = `Sản Phẩm`
-            } catch (error) {
-                console.log(error)
-            }
-        })()
-    },[])
-
+    const queryParams: {page?: string} = useQueryParams()
+    const page = Number(queryParams.page) || 1
+    console.log(queryParams)
 
   return (
     <>
@@ -72,9 +62,9 @@ const Shoppage = () => {
     <div className="container">
       <div className="product_inner">
         <div className="product_list">
-            {products?.value?.map((item: IProduct, index: number)=>(
+            {/* {products?.value?.map((item: IProduct, index: number)=>(
                 <ProductCard key={index} product={item} formatVnd={formatVnd}/>
-            ))}
+            ))} */}
         </div>
         <div className="product_action">
           <button className="product_action_active">1</button>

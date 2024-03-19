@@ -4,8 +4,12 @@ $gl-xs : "screen and (max-width: 35.5em)"; // up to 568px
 $gl-sm : "screen and (max-width: 48em)"; // max 768px
 $gl-md : "screen and (max-width: 64em)"; // max 1024px
 $gl-lg : "screen and (max-width: 80em)"; // max 1280px
+        
 
-
+.admin_list_inner{
+    margin: 2% auto;
+    
+}
 table {
     .addnew{
         background-color: blue;

@@ -39,9 +39,9 @@ const FormProduct = () => {
         }
        }else{
             try {
-            await axios.put(`http://localhost:3000/products/${id}`, product);
+             const {data} = await axios.put(`http://localhost:3000/products/${id}`, product);
              dispatch({type: "EDIT_PRODUCT", payload: product})
-             toast.success('Update Product Complete!')
+             toast.success(`Update ${data.title} Complete!`)
              navigate('/admin')
             } catch (error) {
                 console.log(error)
